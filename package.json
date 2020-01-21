@@ -1,0 +1,21 @@
+{
+  "name": "pwa-gran",
+  "version": "1.0.0",
+  "description": "A complete guide to PWAs. Building a simple Instagram clone.",
+  "scripts": {
+    "start": "http-server -c-1"
+  },
+  "keywords": [
+    "pwa",
+    "progressive",
+    "web",
+    "app",
+    "complete",
+    "tutorial"
+  ],
+  "author": "Edy Segura",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^0.9.0"
+  }
+}
