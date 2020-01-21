@@ -1,5 +1,5 @@
 # PWAGran
-This project is based on Maximilian Schwarzmüller's "Progressive Web Apps - Complete Guide".
+This project is based on Maximilian Schwarzmüller's ["Progressive Web Apps - Complete Guide"](https://www.udemy.com/course/progressive-web-app-pwa-the-complete-guide).
 
 # How to Use
 You need [Node.js](https://nodejs.org) installed on your machine. Simply download the installer from [nodejs.org](https://nodejs.org) and go through the installation steps.
