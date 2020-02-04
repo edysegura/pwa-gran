@@ -11,3 +11,4 @@ Finally, run `npm start` to start the development server and visit [localhost:80
 ## Other References
 
 - [Service Worker Cookbook](https://serviceworke.rs/)
+- [Is Service Worker Ready?](https://jakearchibald.github.io/isserviceworkerready/)
