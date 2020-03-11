@@ -9,4 +9,5 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   console.log('[Service Worker] Fetch interceptor:', event.request.url)
+  event.respondWith(fetch(event.request))
 })
