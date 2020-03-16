@@ -20,6 +20,7 @@ async function precache() {
 
 self.addEventListener('install', (event) => {
   console.log('[Service Worker] installing service worker...', event)
+  event.waitUntil(precache())
 })
 
 self.addEventListener('activate', (event) => {
