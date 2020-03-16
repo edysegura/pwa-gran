@@ -11,7 +11,7 @@ if ('serviceWorker' in navigator) {
  * It works only on mobile
  */
 window.addEventListener('beforeinstallprompt', (event) => {
-  console.log('before install prompt fired', event)
+  console.log('[Service Worker] before install prompt fired...', event)
   event.preventDefault()
   return false
 })
