@@ -1,4 +1,5 @@
-const cacheName = 'static-assets-v1'
+const staticCacheName = 'static-assets-v1'
+
 const assetsLocation = [
   '/',
   '/index.html',
@@ -39,5 +40,5 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   console.log('[Service Worker] fetch interceptor...', event.request.url)
-  event.respondWith(fetch(event.request))
+  event.respondWith(fetchFromCacheWhenAvailable(event.request))
 })
