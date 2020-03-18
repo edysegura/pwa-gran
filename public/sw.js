@@ -20,6 +20,14 @@ async function precache() {
   return cache.addAll(assetsLocation)
 }
 
+async function fetchFromCacheWhenAvailable(request) {
+  const response = await caches.match(request)
+  if (response) {
+    return response
+  }
+  return fetch(request)
+}
+
 self.addEventListener('install', (event) => {
   console.log('[Service Worker] installing service worker...', event)
   event.waitUntil(precache())
