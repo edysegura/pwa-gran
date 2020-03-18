@@ -16,7 +16,7 @@ const assetsLocation = [
 async function precache() {
   console.log('[Service Worker] precaching assets...')
   const cache = await caches.open(cacheName)
-  return cache.addAll(assetsLocation)
+  const cache = await caches.open(staticCacheName)
 }
 
 self.addEventListener('install', (event) => {
