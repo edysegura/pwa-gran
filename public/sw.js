@@ -24,6 +24,7 @@ async function precache() {
 async function fetchFromCacheWhenAvailable(request) {
   const response = await caches.match(request)
   if (response) {
+    console.log('[Service Worker] fetched from cache...', request.url)
     return response
   }
   return fetch(request)
@@ -40,6 +41,6 @@ self.addEventListener('activate', (event) => {
 })
 
 self.addEventListener('fetch', (event) => {
-  console.log('[Service Worker] fetch interceptor...', event.request.url)
+  console.log('[Service Worker] fetch interceptor...')
   event.respondWith(fetchFromCacheWhenAvailable(event.request))
 })
