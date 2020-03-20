@@ -21,13 +21,21 @@ async function precache() {
   return cache.addAll(assetsLocation)
 }
 
+async function cacheNewFetch(request) {
+  console.log('[Service Worker] caching new request...', request.url)
+  const cache = await caches.open(dynamicCacheName)
+  const response = await fetch(request)
+  cache.put(request.url, response.clone())
+  return response
+}
+
 async function fetchFromCacheWhenAvailable(request) {
   const response = await caches.match(request)
   if (response) {
     console.log('[Service Worker] fetched from cache...', request.url)
     return response
   }
-  return fetch(request)
+  return cacheNewFetch(request)
 }
 
 self.addEventListener('install', (event) => {
