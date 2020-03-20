@@ -1,4 +1,5 @@
 const staticCacheName = 'static-assets-v1'
+const dynamicCacheName = 'dynamic-cache-v1'
 
 const assetsLocation = [
   '/',
