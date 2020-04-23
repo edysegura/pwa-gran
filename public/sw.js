@@ -29,7 +29,7 @@ async function fetchFromNetwork(request) {
   return response
 }
 
-async function fetchFromCacheWhenAvailable(request) {
+async function fetchFromCache(request) {
   const response = await caches.match(request)
   if (response) {
     console.log('[Service Worker] fetched from cache...', request.url)
@@ -50,5 +50,5 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   console.log('[Service Worker] fetch interceptor...')
-  event.respondWith(fetchFromCacheWhenAvailable(event.request))
+  event.respondWith(fetchFromCache(event.request))
 })
