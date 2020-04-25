@@ -29,6 +29,11 @@ function removeOldCache(key) {
   }
 }
 
+async function cacheCleanup() {
+  const keyList = await caches.keys()
+  return Promise.all(keyList.map(removeOldCache))
+}
+
 async function fetchFromNetwork(request) {
   console.log('[Service Worker] caching new request...', request.url)
   const cache = await caches.open(dynamicCacheName)
@@ -53,7 +58,7 @@ self.addEventListener('install', (event) => {
 
 self.addEventListener('activate', (event) => {
   console.log('[Service Worker] activating service worker...', event)
-  // TODO implement the cache cleanup
+  event.waitUntil(cacheCleanup())
   return self.clients.claim()
 })
 
