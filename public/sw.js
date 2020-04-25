@@ -21,6 +21,14 @@ async function precache() {
   return cache.addAll(assetsLocation)
 }
 
+function removeOldCache(key) {
+  const rePattern = new RegExp(`${staticCacheName}|${dynamicCacheName}`)
+  if (!rePattern.test(key)) {
+    console.log('[Service Worker] removing old cache')
+    return caches.delete(key)
+  }
+}
+
 async function fetchFromNetwork(request) {
   console.log('[Service Worker] caching new request...', request.url)
   const cache = await caches.open(dynamicCacheName)
@@ -45,6 +53,7 @@ self.addEventListener('install', (event) => {
 
 self.addEventListener('activate', (event) => {
   console.log('[Service Worker] activating service worker...', event)
+  // TODO implement the cache cleanup
   return self.clients.claim()
 })
 
