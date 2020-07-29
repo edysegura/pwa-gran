@@ -54,12 +54,13 @@ async function fetchFromCache(request) {
 self.addEventListener('install', (event) => {
   console.log('[Service Worker] installing service worker...', event)
   event.waitUntil(precache())
+  self.skipWaiting()
 })
 
 self.addEventListener('activate', (event) => {
   console.log('[Service Worker] activating service worker...', event)
   event.waitUntil(cacheCleanup())
-  return self.clients.claim()
+  self.clients.claim()
 })
 
 self.addEventListener('fetch', (event) => {
